@@ -22,6 +22,8 @@ class RendertronRenderer implements Renderer
 
     public function render(string $url): RenderingResult
     {
+		//fixed Rendering to HTTPS
+        $url = str_replace("http://", "https://", $url);
         $client = new Client;
 
         $response = $client->get(Str::finish($this->rendertronUrl, '/render/').$url, [
